@@ -7,6 +7,7 @@ import random
 from send_otp import send_email, generate_otp
 from dotenv import load_dotenv
 from admin import create_verified_user
+
 app = Flask(__name__)
 load_dotenv()
 
@@ -145,7 +146,6 @@ def verify_otp():
         return jsonify({'error': 'An error occurred'}), 500
 
 
-
-if __name__ == '__main__':
-    import datetime
-    app.run(debug=False)  # Set debug=False in production
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
