@@ -1,4 +1,3 @@
-
 import os
 from datetime import datetime, timedelta
 from flask import Flask, request, jsonify
@@ -12,8 +11,8 @@ app = Flask(__name__)
 load_dotenv()
 
 cred = credentials.Certificate('serviceAcountKey.json')
-print(f"Project ID: {os.getenv('FIREBASE_PROJECT_ID')}")
-print(f"Private Key (first 20 chars): {os.getenv('FIREBASE_PRIVATE_KEY')[:20]}...")
+# print(f"Project ID: {os.getenv('FIREBASE_PROJECT_ID')}")
+# print(f"Private Key (first 20 chars): {os.getenv('FIREBASE_PRIVATE_KEY')[:20]}...")
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()  # Get Firestore client
@@ -149,4 +148,4 @@ def verify_otp():
 
 if __name__ == '__main__':
     import datetime
-    app.run(debug=True)  # Set debug=False in production
+    app.run(debug=False)  # Set debug=False in production
