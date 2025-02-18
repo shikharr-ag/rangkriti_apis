@@ -1,0 +1,73 @@
+# Python-specific files and directories
+__pycache__/
+*.pyc
+*.pyd
+.venv/
+venv/
+.venv/  # Or venv/ or virtualenv/ - your virtual environment directory
+env/    # Or .env if you use a dotenv file (see below)
+*.egg
+dist/
+build/
+
+/.env
+serviceAccountKey.json
+serviceAcountKey.json
+# Flask-specific files (adjust as needed)
+instance/  # If you're using instance folders for configuration
+
+# OS-specific files and directories
+.DS_Store
+Thumbs.db
+*.swp  # Swap files (Vim)
+*~     # Backup files (various editors)
+.idea/ # IntelliJ IDEA project files
+.vscode/ # VS Code project files
+.mypy_cache/ # Mypy cache
+
+# Log files
+*.log
+
+# Database files (if applicable and if you don't want to version them. Usually you don't)
+*.db
+*.sqlite
+
+# Temporary files
+*~
+# Other temporary files that your OS or editors might create
+.tmp/
+tmp/
+
+# Sensitive information (NEVER commit these)
+.env  # If you use dotenv for environment variables (highly recommended to use it)
+config.py  # Or any file containing sensitive configuration.  Use environment variables instead.
+credentials.json  # Example of credentials file. Use environment variables.
+
+# Files generated during development or testing
+*.test_results
+coverage/
+
+# Packages or dependencies (if you're managing them manually - usually you shouldn't)
+# Instead, rely on requirements.txt and let pip handle this.
+
+# Deployment-related (depending on your deployment strategy)
+.deploy_config  # Example of a deployment configuration file
+
+# Things you just don't want to commit
+.history  # Shell history
+.bash_history
+.zsh_history
+
+# Example for a specific file you want to ignore
+my_secret_file.txt
+
+# If you use a requirements file (which you SHOULD)
+# You generally don't need to ignore the contents of your virtual environment
+# But if you have very large packages you could consider ignoring their subdirectories.
+
+# If you have large media files or datasets, you might want to exclude them.
+# Consider using a separate storage solution for these.
+
+# If you have specific build artifacts, you can ignore them like so:
+*.tar.gz
+*.zip
