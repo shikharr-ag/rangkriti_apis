@@ -1,5 +1,5 @@
 import os
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from flask import Flask, request, jsonify
 import firebase_admin
 from firebase_admin import credentials, firestore,auth
@@ -88,7 +88,7 @@ def authenticate_user():
         print(f"deleted previous otps for {email} ")
         otp_ref = db.collection('otps').document()
         # # Get current time in milliseconds and add 10 minutes
-        expiry_time = int((datetime.datetime.now() + timedelta(minutes=10)).timestamp() * 1000)
+        expiry_time = int((datetime.now() + timedelta(minutes=10)).timestamp() * 1000)
 
         print(f"expiry at {expiry_time} ")
         otp_ref.set({
@@ -125,9 +125,9 @@ def verify_otp():
             expiry = otp_data.get('expiry')
             print(f"stored is {stored_otp}")
             print(f"expiry {expiry}")
-            expiry_datetime = datetime.datetime.fromtimestamp(expiry/1000,tz=datetime.timezone.utc)
+            expiry_datetime = datetime.fromtimestamp(expiry/1000,tz=timezone.utc)
             
-            now_utc = datetime.datetime.now(datetime.timezone.utc)
+            now_utc = datetime.now(timezone.utc)
            
             if expiry_datetime>now_utc: # Check Expiry
                 if stored_otp == entered_otp:
@@ -149,3 +149,6 @@ def verify_otp():
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
+
+if __name__ == '__main__':
+    app.run(debug=True)  
