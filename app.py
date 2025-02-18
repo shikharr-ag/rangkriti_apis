@@ -30,7 +30,7 @@ def delete_documents(collection_name, field, operator, value):
 
     try:
         collection_ref = db.collection(collection_name)
-        query = collection_ref.where(field_path=field, filter=operator, value=value) # Create query
+        query = collection_ref.where(field, operator, value) # Create query
         docs = query.stream() # Get documents that match the query
         
         batch = db.batch() # Create a batch write for efficiency
